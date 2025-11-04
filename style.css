@@ -1,71 +1,45 @@
 *{
-    padding: 0%;
-    margin: 0%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.container{
+body{
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
 }
-.traffic{
-    /* padding-left: 100px; */
-    /* color:black; */
-    height: 300px;
-    width: 150px;
-    border-radius:5%;
-    background-color: #3B3B1A;
-    box-sizing: border-box;
-    position:absolute;
-    top:20px;
-    left:50px;
+.container{
+    position: absolute;
+    top: 20%;
+    height: 90%;
     display: flex;
     justify-content: center;
-    flex-direction: column;/* vertical stack */
-  align-items: center;    /* center horizontally */
-   gap: 20px;            /*  space between circles */
-  margin-top: 50px;
-
+    align-items: center;
 }
-#box1{
-    background-color: red;
-    height:80px;
-    width:80px;
+.circle{
+    position: absolute;
+    background: transparent;
+    width:calc(var(--i) * 2.5vmin);
+    aspect-ratio: 1;
     border-radius: 50%;
-    border-top:8px solid black ;
-    /* margin-top: 0px; */
-    animation: color1 2s steps(5) 1s infinite; 
+    border: 3px solid rgb(0,255,13);
+    transform-style: preserve-3d;
+    transform: rotateX(70deg) translateZ(50px);
+    animation:animate 3s ease-in-out calc(var(--i) * .08s) infinite;
+    box-shadow: 0 0 15px rgb(124,124,124) ,
+    inset 0 0 15px rgb(124,124,124);
 }
-#box2{
-    background-color: yellow;
-    height:80px;
-    width:80px;
-    border-radius: 50%;
-    border-top: 8px solid black;
-    animation: color2 2s steps(6) 1s infinite; 
-    /* padding-bottom: 5px; */
-}
-#box3{
-    background-color: green;
-    height:80px;
-    width:80px;
-    border-radius: 50%;
-    border-top: 8px solid black;
-    animation: color3 2s steps(9) 1s infinite; 
-    /* display: block; */
-}
-@keyframes color1{
-    0%{background-color: red;}
-    50%{background-color: blue;}
-    100%{background-color:black;}
-}
-@keyframes color2{
-    0%{background-color: yellow;}
-    50%{background-color:black;}
-    100%{background-color:maroon;}
-}
-@keyframes color3{
-    0%{background-color: green;}
-    50%{background-color:teal;}
-    100%{background-color: greenyellow;}
+@keyframes animate{
+    0%,
+    100%{
+        transform: rotateX(70deg) translateZ(50px) translateY(0);
+        filter: hue-rotate(0);
+    }
+    50%{
+        transform: rotateX(70deg) translateZ(50px) translateY(-50vmin);
+        filter: hue-rotate(360deg);
+    }
 }
